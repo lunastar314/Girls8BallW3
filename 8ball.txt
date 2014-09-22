@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<font size="25"><center><b>Girly Magic 8 Ball</b></center></font>
+<meta charset="UTF-8">
+<title>Girly Magic 8 Ball</title>
+
+</head>
+
+<body>
+    <div id="eight-ball">
+	<p></p>
+   	<p></p>
+	<p></p>
+	 <center><button onclick="shake()">SHAKE</button></center>
+	<p id="question"></p>
+        <p id="answer"></p>
+    </div>
+</body>
+<script>
+
+   function shake(){
+        
+        var question = prompt("Ask me a question");
+        var questionText = document.getElementById('question');
+        questionText.innerHTML = question;
+ 
+        var numberOfAnswers = 3;
+
+        var answerOne = '<img src="images/yeskitty.jpg"/>';
+        var answerTwo = '<img src="images/crazykitty.gif"/>';  
+	var answerThree = '<img src="images/hellnokitty.jpg"/>';
+       
+        var chosenAnswer = getAnswerNumber(numberOfAnswers);        
+        displayAnswer(chosenAnswer);
+   
+   function getAnswerNumber(answerCount){
+            var number = getRandomInt(1,answerCount);
+            return number;
+        }
+
+       
+        function getRandomInt(min,max){
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function displayAnswer(answer) {
+
+            
+            var fortuneText = document.getElementById('answer');
+
+            if ( answer == 1 ) {
+                fortuneText.innerHTML = answerOne;
+            }
+            else if ( answer == 2 ) {
+                fortuneText.innerHTML = answerTwo;
+            }
+	    else if ( answer == 3 ) {
+                fortuneText.innerHTML = answerThree;
+            }                      
+        }
+
+
+}
+
+        
+</script>
+</html>
