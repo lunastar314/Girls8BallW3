@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<font size="25"><center><b>Girly Magic 8 Ball</b></center></font>
+<meta charset="UTF-8">
+<title>Girly Magic 8 Ball</title>
+
+</head>
+
+<body bgcolor="#F5A9E1">
+    <div id="eight-ball">
+	<p></p>
+   	<p></p>
+	<p></p>
+	 <center><button onclick="shake()">SHAKE</button></center>
+	<p id="question"></p>
+        <p id="answer"></p>
+    </div>
+</body>
+<script>
+
+	var fortuneTeller = {
+		promptText: "Ask me a question.",
+		answerType: "image",
+		answers: [
+				"8BallArrays/crazykitty.gif",
+				"8BallArrays/hellnokitty.jpg",
+				"8BallArrays/yeskitty.jpg", 
+       		       		"8BallArrays/thinkingkitty.jpg",
+				"8BallArrays/confusedkitty.jpg",
+				"8BallArrays/busykitty.jpg"
+			],
+	getAnswer:  function(){
+		var min = 1;
+		var max = this.answers.length;
+		var index = Math.floor(Math.random() * (max - min + 1)) + min;
+		return this.answers[index-1];
+	    }
+	};
+	console.log(fortuneTeller.answers);
+
+	function shake(){
+	
+		var question = prompt(fortuneTeller.promptText);
+
+		var questionText = document.getElementById('question');
+		questionText.innerHTML = question;
+
+		var randomAnswer = fortuneTeller.getAnswer();
+
+		var fortuneText= document.getElementById('answer');
+		fortuneText.innerHTML = '<img src="' + randomAnswer +'"/>;
+	
+	}
+
+        
+</script>
+</html>
