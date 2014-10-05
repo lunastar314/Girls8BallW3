@@ -1,34 +1,38 @@
-<!DOCTYPE html>
 <html>
 <head>
-<font size="25"><center><b>Girly Magic 8 Ball</b></center></font>
-<meta charset="UTF-8">
-<title>Girly Magic 8 Ball</title>
-<script type="text/javascript" src="js/shake.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-</head>
+		<font size="25"><center><b>Girly Magic 8 Ball</b></center></font>
+		<meta charset="UTF-8">
+		<title>Girly Magic 8 Ball</title>
 
-<body bgcolor="#F5A9E1">
-    <div id="eight-ball">
-	<p></p>
-   	<p></p>
-	<p></p>
-	 <center><button onclick="shake()">SHAKE</button></center>
-	<p id="question"></p>
-        <p id="answer"></p>
-    </div>
-</body>
-<script>
-	window.onload = function(){
+		<script type="text/javascript" src="js/shake.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	</head>
+	<body bgcolor="#F5A9E1">
+		
+		
+		<div id="eight-ball">
+			<button class="button" onclick="shake()">SHAKE DEVISE</button>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p id="question"></p>
+			<p id="answer"></p>
+		</div>
+		
+	</body>	
+	
+	<script>
+	window.onload = function() {
 		window.addEventListener('shake', shakeEventDidOccur, false);
+		
 		function shakeEventDidOccur () {
-			shake();
+				shake();
 		}
-
-	var fortuneTeller = {
-		promptText: "Ask me a question.",
-		answerType: "image",
-		answers: [
+			
+		var fortuneTeller = {
+			promptText: "Ask me a question.",
+			answerType: "image",
+			answers: [
 				"8BallArrays/crazykitty.gif",
 				"8BallArrays/hellnokitty.jpg",
 				"8BallArrays/yeskitty.jpg", 
@@ -36,28 +40,32 @@
 				"8BallArrays/confusedkitty.jpg",
 				"8BallArrays/busykitty.jpg"
 			],
-	getAnswer:  function(){
-		var min = 1;
-		var max = this.answers.length;
-		var index = Math.floor(Math.random() * (max - min + 1)) + min;
-		return this.answers[index-1];
-	    }
-	};
-	console.log(fortuneTeller.answers);
-	
-	function shake(){
-		var question = prompt(fortuneTeller.promptText);
-		var questionText = document.getElementById('question');
-		questionText.innerHTML = question;
+			getAnswer: function(){
+				var min = 1;
+				var max = this.answers.length;
+				var index = Math.floor(Math.random() * (max - min + 1)) + min;
+				return this.answers[index-1];
+			}
+		};
+		console.log(fortuneTeller.answers);
+		
+		//called when SHAKE button is clicked.
+		
+		function shake(){
+			// set the prompt text
+			var question = prompt(fortuneTeller.promptText);
+			// display the question the user asked
+			var questionText = document.getElementById('question');
+			questionText.innerHTML = question;
+			// This asks the fortuneTeller for a random answer
+			var randomAnswer = fortuneTeller.getAnswer();
+			// Access the DOM element we want to change
+			var fortuneText = document.getElementById('answer');
+			// update the element with our answer
+			fortuneText.innerHTML = randomAnswer;
+		}
+		
+		};
+	</script>
 
-		var randomAnswer = fortuneTeller.getAnswer();
-
-		var fortuneText= document.getElementById('answer');
-		fortuneText.innerHTML = '<img src="' + randomAnswer +'"/>;
-	
-	}
-
-      };
-  
-</script>
 </html>
