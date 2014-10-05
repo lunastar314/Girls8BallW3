@@ -4,7 +4,8 @@
 <font size="25"><center><b>Girly Magic 8 Ball</b></center></font>
 <meta charset="UTF-8">
 <title>Girly Magic 8 Ball</title>
-
+<script type="text/javascript" src="js/shake.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 </head>
 
 <body bgcolor="#F5A9E1">
@@ -17,46 +18,46 @@
         <p id="answer"></p>
     </div>
 </body>
-	
 <script>
+	window.onload = function(){
+		window.addEventListener('shake', shakeEventDidOccur, false);
+		function shakeEventDidOccur () {
+			shake();
+		}
+
 	var fortuneTeller = {
-		promptText: "Ask me something.",
+		promptText: "Ask me a question.",
 		answerType: "image",
 		answers: [
-			
-			"8BallArrays/crazykitty.gif",
-       			"8BallArrays/hellnokitty.jpg", 
-			"8BallArrays/yeskitty.jpg", 
-       		        "8BallArrays/thinkingkitty.jpg",
-			"8BallArrays/confusedkitty.jpg",
-			"8BallArrays/busykitty.jpg"
-    
-    
+				"8BallArrays/crazykitty.gif",
+				"8BallArrays/hellnokitty.jpg",
+				"8BallArrays/yeskitty.jpg", 
+       		       		"8BallArrays/thinkingkitty.jpg",
+				"8BallArrays/confusedkitty.jpg",
+				"8BallArrays/busykitty.jpg"
 			],
-	getAnswer: function(){
-			var min = 1;
-			var max = this.answers.length;
-			var index = Math.floor(Math.random() * (max - min + 1)) + min;
-			return this.answers[index-1];
-			}
-		};
-		console.log(fortuneTeller.answers);
-		
-		
-		
-		function shake(){
-			
-			var question = prompt(fortuneTeller.promptText);
-			
-			var questionText = document.getElementById('question');
-			questionText.innerHTML = question;
-			
-			var randomAnswer = fortuneTeller.getAnswer();
-			
-			var fortuneText = document.getElementById('answer');
-			
-			fortuneText.innerHTML = '<img src="' + randomAnswer +'"/>';
-		}
-	</script>
+	getAnswer:  function(){
+		var min = 1;
+		var max = this.answers.length;
+		var index = Math.floor(Math.random() * (max - min + 1)) + min;
+		return this.answers[index-1];
+	    }
+	};
+	
 
+	function shake(){
+	
+		var questionText = document.getElementById('question');
+		questionText.innerHTML = question;
+
+		var randomAnswer = fortuneTeller.getAnswer();
+
+		var fortuneText= document.getElementById('answer');
+		fortuneText.innerHTML = '<img src="' + randomAnswer +'"/>;
+	
+	}
+
+      };
+  
+</script>
 </html>

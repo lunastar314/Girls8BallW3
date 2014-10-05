@@ -4,7 +4,8 @@
 <font size="25"><center><b>Girly Magic 8 Ball</b></center></font>
 <meta charset="UTF-8">
 <title>Girly Magic 8 Ball</title>
-
+<script type="text/javascript" src="js/shake.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 </head>
 
 <body bgcolor="#F5A9E1">
@@ -18,6 +19,11 @@
     </div>
 </body>
 <script>
+	window.onload = function(){
+		window.addEventListener('shake', shakeEventDidOccur, false);
+		function shakeEventDidOccur () {
+			shake();
+		}
 
 	var fortuneTeller = {
 		promptText: "Ask me a question.",
@@ -37,12 +43,10 @@
 		return this.answers[index-1];
 	    }
 	};
-	console.log(fortuneTeller.answers);
+	
 
 	function shake(){
 	
-		var question = prompt(fortuneTeller.promptText);
-
 		var questionText = document.getElementById('question');
 		questionText.innerHTML = question;
 
@@ -53,6 +57,7 @@
 	
 	}
 
-        
+      };
+  
 </script>
 </html>
